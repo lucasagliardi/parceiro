@@ -1,0 +1,32 @@
+<div class="modal modal-overlay" ui-if='dadosSolicitacao' ui-state='dadosSolicitacao' ui-prevent-touchmove-defaults>
+  <div class="scrollable">
+    <div class="scrollable-content section">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button class="close" ui-turn-off="dadosSolicitacao">&times;</button>
+            <h4 class="modal-title">Dados da Solicitação</h4>
+          </div>
+          <div class="modal-body">
+            <h4>Endereço de Origem:</h4>
+            <p>{{enderecoPartida}}</p>
+            <h4>Endereço de Destino:</h4>
+            <p>{{enderecoDestino}}</p>
+            <h4>Distancia:</h4>
+            <p>{{distanciaText}}</p>
+            <h4>Tarifa:</h4>
+            <p>{{tarifa}}</p>
+          </div>
+          <div class="modal-footer">
+            <button ui-turn-off="dadosSolicitacao" class="btn btn-default">
+          <span class="fa fa-times" aria-hidden="true"></span>
+          Cancelar</button>
+            <button ui-turn-off="dadosSolicitacao" class="btn btn-primary" ui-turn-on="chamadaMotorista" ng-click="solicitar()">
+          <span class="fa fa-check" aria-hidden="true"></span>
+          Solicitar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,85 @@
+<div ui-content-for="title">
+  <i class="fa fa-car"></i>
+  <span class="nome">{{parceiro.nome}}</span>
+</div>
+<div class="scrollable">
+  <div class="scrollable-content section">
+    <div>
+      <div ng-if="!parceiro.online && !loading">
+        <h5 style="text-align: center;margin-top: 40px;height: 40px;display: block;font-weight: bold;">
+          {{erroStatus}}
+        </h5>
+      </div>
+      <div ng-if="parceiro.online && loading" style="padding-top: 150px;">
+        <div class="app-content-loading">
+          <i class="fa fa-cog fa-spin loading-cog"></i>
+        </div>
+        <h5 style="text-align: center;margin-top: 40px;height: 40px;display: block;font-weight: bold;">
+          {{dadosViagem.resultado}}
+        </h5>
+      </div>
+      <!--<div class=" animated fadeInUp panel panel-default">
+        <H1>TESTE </H1>
+      </div>-->
+      <div ng-if="parceiro.online && encontrou">
+        <div class="animated fadeInUp panel panel-default">
+
+          <div class="panel-heading">
+            <div class="btn-group pull-right">
+              <a ui-turn-on='myDropdown{{idx}}' class='btn'>
+                <i class="fa fa-ellipsis-v"></i>
+              </a>
+              <ul ui-state="myDropdown{{idx}}" class="dropdown-menu" ui-outer-click="Ui.turnOff('myDropdown' + idx)" ui-outer-click-if="Ui.active('myDropdown' + idx)"
+                role="menu" ui-show="myDropdown{{idx}}" ui-turn-off="myDropdown{{idx}}">
+
+                <li><a>Aceitar</a></li>
+                <li class="divider"></li>
+                <li><a>Recusar</a></li>
+              </ul>
+            </div>
+            <h3 class="panel-title">{{dadosViagem.resultado}}</h3>
+          </div>
+          <div class="panel-body">
+            <p><label>Local:</label> {{dadosViagem.local}}</p>
+            <p><label>Referência:</label> {{dadosViagem.referencia}}</p>
+            <p ng-if="inciar"><label>Nome:</label> {{dadosAceitacao.nome}}</p>
+            <p ng-if="inciar"><label>Telefone:</label> {{dadosAceitacao.telefone}}</p>
+            <p ng-if="iniciou"><label>Local de Destino:</label> {{dadosInicioViagem.destino}}</p>
+          </div>
+          <div class="panel-footer">
+            <button ng-if="!inciar && !iniciou && !aviso" ng-click="recusar()" class="btn btn-default">
+          <span class="fa fa-times" aria-hidden="true"></span>
+          Recusar</button>
+            <button ng-click="aceitar()" ng-if="!inciar && !iniciou  && !aviso" class="btn btn-primary">
+          <span class="fa fa-check" aria-hidden="true"></span>
+          Aceitar</button>
+            <button ng-click="iniciar()" ng-if="inciar" class="btn btn-primary">
+          <span class="fa fa-car" aria-hidden="true"></span>
+          Iniciar</button>
+            <button ng-if="aviso" ng-click="avisoChegada()" class="btn btn-primary">
+          <span class="fa fa-map-marker" aria-hidden="true"></span>
+          Avisar Chegada</button>
+            <button ng-if="aviso || inciar" ng-click="cancelar()" class="btn btn-danger">
+          <span class="fa fa-times" aria-hidden="true"></span>
+          Cancelar</button>
+            <button ng-if="iniciou" ui-turn-on="finalizaViagem" ng-click="pagamento()" class="btn btn-success">
+          <span class="fa fa-money" aria-hidden="true"></span>
+          Finalizar Viagem</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <fieldset>
+      <div ui-content-for="navbarAction">
+        <ui-switch style="margin:12px;float:left;" ng-click="onlineOffline(parceiro.online)" ng-model='parceiro.online'>
+        </ui-switch>
+        <label style="margin: 15px 10px 0 0;" class="pull-right" ng-if="parceiro.online">ONLINE</label>
+        <label style="margin: 15px 10px 0 0;" class="pull-right" ng-if="!parceiro.online">OFFLINE</label>
+      </div>
+    </fieldset>
+  </div>
+</div>
+<div ui-content-for="modals">
+  <div ng-include="'finalizaViagem.html'"></div>
+  <div ng-include="'avaliarViagem.html'"></div>
+</div>

@@ -1,0 +1,30 @@
+<div class="modal" ui-if='avaliarViagem' ui-state='avaliarViagem'>
+  <div class="modal-backdrop in"></div>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button class="close" ui-turn-off="avaliarViagem">&times;</button>
+        <h4 class="modal-title">Avaliação do Passageiro</h4>
+      </div>
+      <div>
+        <div class="col-sm-12">
+          <div class="col-sm-2"></div>
+          <div class="alert alert-avaliacao">
+            <h4>Avaliação do Passageiro</h4>
+            <div star-rating rating="avaliacao" click="clickAvaliacao(param)"></div>
+            <div>
+              <span ng-if="avaliacao" class="label label-primary">Nota: {{avaliacao}}</span>
+
+            </div>
+          </div>
+          <div class="col-sm-2"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button style="text-align:center" ui-turn-off="avaliarViagem" ng-click="avaliar()" class="btn btn-primary">
+          <span class="fa fa-star" aria-hidden="true"></span>
+          Enviar</button>
+      </div>
+    </div>
+  </div>
+</div>

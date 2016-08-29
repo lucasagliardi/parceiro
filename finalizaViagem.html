@@ -1,0 +1,31 @@
+<div class="modal modal-overlay" ui-if='finalizaViagem' ui-state='finalizaViagem'>
+  <div class="scrollable">
+    <div class="scrollable-content section">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button class="close" ui-turn-off="finalizaViagem">&times;</button>
+            <h4 class="modal-title">Finalizar Viagem</h4>
+          </div>
+          <div class="modal-body">
+            <h4>Tarifa:</h4>
+            <p>{{tarifa}}</p>
+            <h4>Forma Recebimento:</h4>
+            <div class="form-group">
+              <select class="form-control" ng-required="true" ng-model="formaPagamento">
+              <option value="">[Selecione]</option>
+              <option ng-repeat="formaPagamento in formasPagamento" value="{{formaPagamento.id}}">{{formaPagamento.descricao}}</option>
+          </select>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button ui-turn-off="finalizaViagem" ui-turn-on="avaliarViagem" class="btn btn-primary" ng-disabled="!formaPagamento" ng-click="finalizar(formaPagamento)">
+          <span class="fa fa-check" aria-hidden="true"></span>
+          Confirmar Recebimento</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
